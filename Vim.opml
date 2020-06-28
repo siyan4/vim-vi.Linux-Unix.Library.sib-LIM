@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml xmlns:sx="http://www.microsoft.com/schemas/rss/sse" version="1.0">
+<head>
+<title/>
+<dateCreated>2009-03-05T14:47:43</dateCreated>
+<dateModified>2009-03-05T17:39:02</dateModified>
+<ownerName>Joe Martinez</ownerName>
+<ownerEmail>joe.martinez@elayaway.com</ownerEmail>
+</head>
+<body>
+<outline text="Cursor Movement">
+<outline text="h,j,k,l">
+<sx:sync version="1" id="b09F8n57Td27yLbbbVHa8A=="/>
+</outline>
+<outline text="ctrl-f = page up">
+<sx:sync version="1" id="FGDZOQSJS+OixwjuRhV4dQ=="/>
+</outline>
+<outline text="ctrl-b = page down">
+<sx:sync version="1" id="DWpLLF2dQc+wkyr7zhelGQ=="/>
+</outline>
+<outline text="% = jump to matching brace">
+<sx:sync version="1" id="PZpMrHuKRe+hpVX7SrloWg=="/>
+</outline>
+<outline text="w = jump to end of words (punctuation)">
+<sx:sync version="1" id="IYT/vEnnSfCUN3fzlfVMzg=="/>
+</outline>
+<outline text="W = jump by words">
+<sx:sync version="1" id="PODvnwcERBW0/y0VHHII4g=="/>
+</outline>
+<outline text="e = jump to end of words (punctuation)">
+<sx:sync version="1" id="rt5/FthNRV2yyfQBoZ29+A=="/>
+</outline>
+<outline text="E = jump to end of words">
+<sx:sync version="1" id="jdFEjl5ESviTpFs1Xk+/sQ=="/>
+</outline>
+<outline text="b = jump backward by words (punctuation)">
+<sx:sync version="1" id="G0GBq1YaRHmbUdi7abYqDA=="/>
+</outline>
+<outline text="B = jump backward by words">
+<sx:sync version="1" id="MKJaZ+ALST+8Ui6/RKoNNg=="/>
+</outline>
+<outline text="0 = start of line">
+<sx:sync version="1" id="z/nbrxdATACbSe0eloYcUg=="/>
+</outline>
+<outline text="^ = first character of line">
+<sx:sync version="1" id="yT5jZEMBT9iuQg3KoYCStw=="/>
+</outline>
+<outline text="$ = end of line">
+<sx:sync version="1" id="tuGGFvcFSjiYwNWp1Pj20A=="/>
+</outline>
+<outline text="gg = go to first line">
+<sx:sync version="1" id="xeRHtPGZQ7GudxJFVkG0+A=="/>
+</outline>
+<outline text="gd = go to def of the function or var under the cursor">
+<sx:sync version="1" id="40+GBZPsSB2wJAQvu5AZJg=="/>
+</outline>
+<outline text="[N]G = go to line N or last line">
+<sx:sync version="1" id="7G+DkfnSSkWWyCJnYaTU/A=="/>
+</outline>
+<outline text="fx = move the cursor forward to the next occurrence of character x on the current line">
+<sx:sync version="1" id="IxjI25iSRWO9CnOjlrf5yg=="/>
+</outline>
+<outline text="; = repeat last f command">
+<sx:sync version="1" id="UnjBhgBQT3GC1jlBfjfrLA=="/>
+</outline>
+<outline text="tx = like fx but move right before the character">
+<sx:sync version="1" id="XS4lW09HQh2nY/nGHx0iyw=="/>
+</outline>
+<outline text="Fx = move the cursor backwards to the next occurrence of x">
+<sx:sync version="1" id="/wqL0Un8T6OhVGML72ecQQ=="/>
+</outline>
+<outline text=") ,(= move the cursor to next, previous sentence">
+<sx:sync version="1" id="95SWmtfrRhek8QWfypr0dw=="/>
+</outline>
+<outline text="* = Read the string under the cursor and go to next occurrence">
+<sx:sync version="1" id="ef4XhC2GSaG7HbuMTTOOWg=="/>
+</outline>
+<outline text="# = same as * but goes to previous occurrence">
+<sx:sync version="1" id="IVAWGlz5QZyiIvrKsklmZQ=="/>
+</outline>
+<outline text="`. = Go to line last edited">
+<sx:sync version="1" id="TCQnRRRrTvaKOwd/QUvWeA=="/>
+</outline>
+<outline text="Screenwise">
+<outline text="H = move the cursor to the Highest line on the screen">
+<sx:sync version="1" id="CUHY6TwnRVauEHeYnFoRSA=="/>
+</outline>
+<outline text="M = move the cursor to the Middle of the screen">
+<sx:sync version="1" id="1MU7/W07Sum4xQBTLc3fAg=="/>
+</outline>
+<outline text="L = move the cursor to the Lowest line of the screen">
+<sx:sync version="1" id="08DsE63bQ/2ElKp0b5si4A=="/>
+</outline>
+<sx:sync version="1" id="0W8iSBQISP6sRa5/MHNHrw=="/>
+</outline>
+<outline text="Bookmarks">
+<outline text="ma = Make a bookmark name a at the current cursor position">
+<sx:sync version="1" id="jB33YnS5Rg6OxYZH25mJlA=="/>
+</outline>
+<outline text="`a = Go to bookmark a (backtick, not single quote)">
+<sx:sync version="1" id="4ABZSfFERiuXg1H5+h2j9Q=="/>
+</outline>
+<sx:sync version="1" id="Ux412S7xSoalywNfI6yDOA=="/>
+</outline>
+<sx:sync version="1" id="+OGd/OFCSOi+cLXLKskd5w=="/>
+</outline>
+<outline text="Insert Mode">
+<outline text="i = insert mode at cursor">
+<sx:sync version="1" id="DUXUHXZaTmycMkZMCnXZUw=="/>
+</outline>
+<outline text="I = insert at the beginning of line">
+<sx:sync version="1" id="eHDY7LWcTLCtwkEV87itQQ=="/>
+</outline>
+<outline text="a = append after the cursor">
+<sx:sync version="1" id="fUvCJ7MZQ6mz8D1GUw1mog=="/>
+</outline>
+<outline text="A = append at the end of the line">
+<sx:sync version="1" id="GEjqneOATv2QR4ZJ3+EW0A=="/>
+</outline>
+<outline text="o = open blank line below current line">
+<sx:sync version="1" id="j0li+Gs9S+mufH337C6rug=="/>
+</outline>
+<outline text="O = open blank line above current line">
+<sx:sync version="1" id="t83SyLdeTiuU0xbsWbF7iQ=="/>
+</outline>
+<outline text="Esc = exit insert mode">
+<sx:sync version="1" id="c8Bn4quPSZqV7dPXEd9lkA=="/>
+</outline>
+<outline text="Completions (type a few chars then)">
+<outline text="ctrl-n = next completion">
+<sx:sync version="1" id="OlNM8ZgYT1eiViN1mYibxA=="/>
+</outline>
+<outline text="ctrl-p = previous completion">
+<sx:sync version="1" id="qMGYKsvPSXmj0/t1uZ30rw=="/>
+</outline>
+<sx:sync version="1" id="14UuPJfMSJSVR8xXQOCgXA=="/>
+</outline>
+<sx:sync version="1" id="w2hFfm3mTyOrM3pFPMMmZg=="/>
+</outline>
+<outline text="Editing">
+<outline text="r = replace a single character (!insert mode)">
+<sx:sync version="1" id="dq3TY4h9SWimVwwbcr5PZA=="/>
+</outline>
+<outline text="J = join line below to the current line">
+<sx:sync version="1" id="yurfOR5+QnKVV8yBryxgVg=="/>
+</outline>
+<outline text="cc = change an entire line">
+<sx:sync version="1" id="n/uPhPwZRcyzmkp1a/BAAA=="/>
+</outline>
+<outline text="cw = change to the end of word">
+<sx:sync version="1" id="Whdxv8QHR4ibPyqj3vk1yw=="/>
+</outline>
+<outline text="c$ = change to the end of line">
+<sx:sync version="1" id="eP4I1zGCRJCx6z4Hv8Iwfw=="/>
+</outline>
+<outline text="s = delete character at cursor and substitute text">
+<sx:sync version="1" id="CCIIYahzTvuvk87FsY10hA=="/>
+</outline>
+<outline text="S = delete line at cursor and substitute text">
+<sx:sync version="1" id="H5PDvXXJRHOQ7LrfA47qJw=="/>
+</outline>
+<outline text="xp = transpose to letters">
+<sx:sync version="1" id="9DpfrKWvRJmah9ahp/hdZQ=="/>
+</outline>
+<outline text="u = undo">
+<sx:sync version="1" id="8DTpn/z6RwmMwijbF0IkBw=="/>
+</outline>
+<outline text="ctrl-r = redo">
+<sx:sync version="1" id="jEW9x9xOSNCNEdFgN/6Big=="/>
+</outline>
+<outline text=". = repeat last command">
+<sx:sync version="1" id="VzwJi7qwSdW8sa40bA77Tg=="/>
+</outline>
+<outline text="~ = switch case">
+<sx:sync version="1" id="pgvVc+IeSn+clGEGxlrgVw=="/>
+</outline>
+<outline text="g~iw = switch case of current word">
+<sx:sync version="1" id="s1FiR6fkTVCbBl0awEXHlg=="/>
+</outline>
+<outline text="gUiw = make current word uppercase">
+<sx:sync version="1" id="rJUViu3AR3m1va8HU3TSMg=="/>
+</outline>
+<outline text="guiw = make current word lowercase">
+<sx:sync version="1" id="oXgy6sb3RPOecMOcISS15w=="/>
+</outline>
+<outline text="&gt;&gt; = indent line one column right">
+<sx:sync version="1" id="NalxBO0AS12Ao+dZEuTIZQ=="/>
+</outline>
+<outline text="&lt;&lt; = indent line one column left">
+<sx:sync version="1" id="niA6I+fpQcqnsHk7fvSWHg=="/>
+</outline>
+<outline text="== = auto-indent current line">
+<sx:sync version="1" id="3WTa5e1qQ36xIUTj8rIZ1g=="/>
+</outline>
+<sx:sync version="1" id="9X4yNLuVSGqzCdqf/g0DKg=="/>
+</outline>
+<outline text="Cut and Paste">
+<outline text="dd = delete (cut) a line">
+<sx:sync version="1" id="9IAJ8wCtT0+mLknflC/kKA=="/>
+</outline>
+<outline text="dw = delete the current word">
+<sx:sync version="1" id="S/U9DBQ/QBCpiGYS5PcaXg=="/>
+</outline>
+<outline text="x = delete current character">
+<sx:sync version="1" id="dv1yHN7BRo6J6siNutuv3w=="/>
+</outline>
+<outline text="X = delete previous character">
+<sx:sync version="1" id="daPeNhTOSTyopwBUCty8og=="/>
+</outline>
+<outline text="D = delete to end of line">
+<sx:sync version="1" id="eF8JW3fwReGPnGcabqg5SA=="/>
+</outline>
+<outline text="yy = yank (copy a line)">
+<sx:sync version="1" id="ZUsALtpFS16fp28p5D60NA=="/>
+</outline>
+<outline text="2yy = yank (copy) 2 lines">
+<sx:sync version="1" id="YS2WmMApQRmyC4xq7WGcRw=="/>
+</outline>
+<outline text="yw = yank word">
+<sx:sync version="1" id="6JubIocgQlqIkesG3Io47Q=="/>
+</outline>
+<outline text="y$ = yank to end of line">
+<sx:sync version="1" id="AzGJanMTSk+xc8YjHZWfUA=="/>
+</outline>
+<outline text="p = put the clipboard after cursor/current line">
+<sx:sync version="1" id="ot5gSTxYSUOAFzgBRBPC0Q=="/>
+</outline>
+<outline text="P = put the clipboard before the cursor/current line">
+<sx:sync version="1" id="VgWAm2tBTRK2SYroBtkaaA=="/>
+</outline>
+<outline text="]p = put the clipboard at the proper indentation">
+<sx:sync version="1" id="fxW1+RaYRI2PBqGSLLW+oQ=="/>
+</outline>
+<outline text="&quot;a = use a register named a for the next yank/paste operation">
+<sx:sync version="1" id="z/GACSkBQ/Cuq5nsowOO3w=="/>
+</outline>
+<sx:sync version="1" id="yFK/6Dm3RB2l1pPbcPJwZg=="/>
+</outline>
+<outline text="Visual Mode">
+<outline text="Marking Text">
+<outline text="v = start visual mode">
+<sx:sync version="1" id="w7xZ3FQ2Tk2GPbduNUC9og=="/>
+</outline>
+<outline text="V = start linewise visual mode">
+<sx:sync version="1" id="Bjql+fJfSei/AnmgvbPW1Q=="/>
+</outline>
+<outline text="ctrl-v = start blockwise visual mode">
+<sx:sync version="1" id="nT+f7joITLecZvqYgbn3SA=="/>
+</outline>
+<outline text="o = move to other end of marked area">
+<sx:sync version="1" id="NyUGS409SC+Kr9VbJA5S4w=="/>
+</outline>
+<outline text="U = upper case of marked area">
+<sx:sync version="1" id="X+g0t9TKSB+wT/6qr59DIA=="/>
+</outline>
+<outline text="O = move to Other corner of block">
+<sx:sync version="1" id="WzCz6m74QeWM8T/YYfY63A=="/>
+</outline>
+<outline text="aw = mark a word">
+<sx:sync version="1" id="MXqFCOQFQ/2ACutEYZU3Kg=="/>
+</outline>
+<outline text="ab = a block with parens (braces)">
+<sx:sync version="1" id="ujmWIrvITCKsRYijMdknMQ=="/>
+</outline>
+<outline text="aB = a block with brackets (curly braces)">
+<sx:sync version="1" id="OeZcNfflRqSoaLkwOqPFag=="/>
+</outline>
+<outline text="ib = inner () block">
+<sx:sync version="1" id="dAzTMcBHTqGTPxQZDlUyVw=="/>
+</outline>
+<outline text="iB  =inner {} block">
+<sx:sync version="1" id="x5KvRoMwScCyjCRVfnm9VA=="/>
+</outline>
+<sx:sync version="1" id="8X9cSzrUTK+m8dwWt6qnMQ=="/>
+</outline>
+<outline text="Commands">
+<outline text="&gt; = shift right">
+<sx:sync version="1" id="79wK5z/GSWW/KHb1nD0q0w=="/>
+</outline>
+<outline text="&lt; = shift left">
+<sx:sync version="1" id="QVR1pVhwTCuJS2pykyxXXQ=="/>
+</outline>
+<outline text="y = yank">
+<sx:sync version="1" id="/1sdbm8RTzOV6/T6Rl+5QA=="/>
+</outline>
+<outline text="d = delete">
+<sx:sync version="1" id="CGsBmBFYSgSss9xB1CJgvA=="/>
+</outline>
+<outline text="~ = switch case">
+<sx:sync version="1" id="6FGTIWBmRzG/NlGi9ywt2w=="/>
+</outline>
+<sx:sync version="1" id="6YgVPdS/SJyEGuBjoHgItg=="/>
+</outline>
+<sx:sync version="1" id="l4euVh9BSpq4Gxx3GU9Big=="/>
+</outline>
+<outline text="Search/Replace">
+<outline text="/pattern = search for pattern">
+<sx:sync version="1" id="xGDCFwIyRaq7t+H7cr1Z4Q=="/>
+</outline>
+<outline text="?pattern = search backwards for pattern">
+<sx:sync version="1" id="kVXxiDiIQNua2PQRrVXC8w=="/>
+</outline>
+<outline text="n = repeat search in same direction">
+<sx:sync version="1" id="eK8iZnxpRlCqrpsDMZpS9Q=="/>
+</outline>
+<outline text="N = repeat search in opposite direction">
+<sx:sync version="1" id="1SCkGxHaRTmhQxVx60d90Q=="/>
+</outline>
+<outline text=":s/old/new/g = replace all old throughout file">
+<sx:sync version="1" id="1quzL+L3TuK7Q3jTyUcznw=="/>
+</outline>
+<outline text=":s/old/new/gc = replace all old with new and confirm each one">
+<sx:sync version="1" id="xdWh7j/rRTmYOnYHH8HPsg=="/>
+</outline>
+<sx:sync version="1" id="dhZriyzIT/KfxQkqKF9bPg=="/>
+</outline>
+<outline text="Exiting">
+<outline text=":w = save">
+<sx:sync version="1" id="KQecZ6TaRQitNSTuf9q++A=="/>
+</outline>
+<outline text=":wq = save and quit">
+<sx:sync version="1" id="e4LXPYcATAmzEDBf+u3Ttg=="/>
+</outline>
+<outline text=":x = save and quit">
+<sx:sync version="1" id="NbAX8tCrSTamTKPxmq13cw=="/>
+</outline>
+<outline text=":q = quit, but failed if unsaved">
+<sx:sync version="1" id="lVzZ9/nJRDS7uRgyMjaKxg=="/>
+</outline>
+<outline text=":q! = quit">
+<sx:sync version="1" id="p3VJCBcUQauC2Cmhid5VTg=="/>
+</outline>
+<sx:sync version="1" id="p7Hlth8XRLSAbyaIMHpwSw=="/>
+</outline>
+<outline text="Multi-File">
+<outline text=":e filename = edit a file in a new buffer">
+<sx:sync version="1" id="GYf0dgwSSvOiZWLCRhNfLA=="/>
+</outline>
+<outline text=":bn = go to next buffer">
+<sx:sync version="1" id="D4bCV9/AQMurqe9KO5u4/Q=="/>
+</outline>
+<outline text=":bd = delete a buffer (close file)">
+<sx:sync version="1" id="TEAsCA3nQ9ObsIo7xAOagg=="/>
+</outline>
+<outline text=":sp fn = open a file in new buffer and split window">
+<sx:sync version="1" id="BuvDbH4KQAeKp3cj1sDXTQ=="/>
+</outline>
+<outline text="ctrl w - window commands">
+<outline text="ctrl-w s = split window">
+<sx:sync version="1" id="kc+Ki7voQl6PRhCqF6jUXA=="/>
+</outline>
+<outline text="ctrl-w w = switch windows">
+<sx:sync version="1" id="lA6JKC4kQsycD6QOu7IWyA=="/>
+</outline>
+<outline text="ctrl-w q = quit a window">
+<sx:sync version="1" id="LxOtDOERSF2Rc3qWAPLR0A=="/>
+</outline>
+<outline text="ctrl-w v = split windows vertically">
+<sx:sync version="1" id="SerBgKLKS0GvJ+7UVWZxMw=="/>
+</outline>
+<sx:sync version="1" id="dkrtD16pTAW7xGbFk9XCnA=="/>
+</outline>
+<outline text="Tab Commands">
+<outline text=":tabe fn = edit file in new tab">
+<sx:sync version="1" id="47ZS4S31TU2KDx2qFOY+kQ=="/>
+</outline>
+<outline text="gt = next tab">
+<sx:sync version="1" id="VNzw2kxdQnWdoC+Tw7lJfA=="/>
+</outline>
+<outline text="gT = previous tabs">
+<sx:sync version="1" id="B2ElBc6CSFCHsYIVDe9n3g=="/>
+</outline>
+<outline text=":tabr = First tab">
+<sx:sync version="1" id="oOAb6KkGRfGnnhy1AFjnBQ=="/>
+</outline>
+<outline text=":tabl = Last tab">
+<sx:sync version="1" id="VE2coBitTpyXKNV+mJOKIw=="/>
+</outline>
+<outline text=":tabm [N] = move current tab after tab N">
+<sx:sync version="1" id="fboGHteEQWGYME5ZsLNpbw=="/>
+</outline>
+<sx:sync version="1" id="wVQFs1BtQnadc9w8NI0HkQ=="/>
+</outline>
+<sx:sync version="1" id="MiE3WpELScijnNOyyye5mA=="/>
+</outline>
+<outline text="Macros">
+<outline text="qa = start recording a macro in register a">
+<sx:sync version="1" id="Ae8sYVslSNyCpCCkbJ+Isw=="/>
+</outline>
+<outline text="q = end recording">
+<sx:sync version="1" id="MvSzNIOcSYecNJoBH6FpfQ=="/>
+</outline>
+<outline text="@a = replay macro in register a">
+<sx:sync version="1" id="NpYZipbUTHOQ0SDOVO1+9Q=="/>
+</outline>
+<sx:sync version="1" id="mB098prBSnC9CXNKktSPTw=="/>
+</outline>
+</body>
+</opml>

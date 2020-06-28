@@ -1,0 +1,947 @@
+%!PS-Adobe-3.0 EPSF-3.0 
+%%BoundingBox: 0 0 1024 724
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configurables
+
+% Set this to true to permute the keyboard for the Dvorak layout. Setting it to true is why I wrote this PostScript version. :)
+/Dvorak false def
+
+% Set this to true to disable colors. If this is true, different shades of gray will be used instead of colors.
+/GrayscaleOnly true def
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DO NOT MODIFY BELOW THIS LINE
+
+% Constants
+
+GrayscaleOnly { /DeviceGray } { /DeviceRGB } ifelse setcolorspace
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Utilities
+
+% Right-justified show.
+/rshow {
+	dup stringwidth
+	pop neg 0 rmoveto
+	show
+} def
+
+% Center-justified show.
+/cshow {
+	dup stringwidth
+	pop neg 0.5 mul 0 rmoveto
+	show
+} def
+
+% Center-justified ashow.
+/cashow {
+	dup stringwidth
+	pop neg 0.5 mul 0 rmoveto
+	ashow
+} def
+
+% array_of_components -> setcolorwitharray -> -
+% Obviously, the array should have the proper number of components for the current color space.
+/setcolorwitharray {
+	aload pop setcolor
+} def
+
+% bool -> booltoint -> int
+/booltoint {
+	{1} {0} ifelse
+} def
+
+% Converts elements of an array from 0..255 to 0..1.
+/255to1 {
+	2 dict begin
+		/array exch def
+
+		array length 0 gt {
+			0 1 array length 1 sub {
+				/index exch def
+				array index get
+				255 div
+				array index 3 -1 roll put
+			} for
+		} if
+
+		array
+	end
+} def
+
+% string seek -> strchr -> index
+% Returns index of character (one-character string) 'seek' in 'string'.
+/strchr {
+	0 get
+	2 dict begin
+		/quarry exch def
+		/index 0 def
+		% Stack: string
+		dup
+		% Stack: string string
+		{
+			% Stack: string cur_char
+			quarry eq {
+				exit
+			} if
+
+			/index index 1 add def
+		} forall
+
+		% Stack: string
+		% If index >= length, we have failed, and must return -1.
+		length index exch ge {
+			-1
+		} {
+			index
+		} ifelse
+	end
+} def
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Colors
+% All of these are RGB. Use with setcolorwitharray.
+
+GrayscaleOnly not {
+	/red   [1 0 0] def
+	/black [0 0 0] def
+	/white [1 1 1] def
+
+	/motioncolor [ 107 255 107 ] 255to1 def
+	/cmdcolor    [ 255 254 107 ] 255to1 def
+	/opcolor     [ 255 173  31 ] 255to1 def
+	/extracolor    white         def
+} {
+	/black  [0      ] def
+	/gray25 [0.25   ] def
+	/gray33 [1 3 div] def
+	/gray40 [0.4    ] def
+	/gray50 [0.5    ] def
+	/gray60 [0.6    ] def
+	/gray67 [2 3 div] def
+	/gray75 [0.75   ] def
+	/gray80 [0.8    ] def
+	/white  [1      ] def
+
+	/red    gray25            def
+
+	/motioncolor gray60 def
+	/cmdcolor    gray80 def
+	/opcolor     gray40 def
+	/extracolor  white  def
+} ifelse
+
+/footnotecolor red def
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Border
+
+160 4 moveto
+1004  20 16 270 360 arc
+1004 706 16   0  90 arc
+20   706 16  90 180 arc
+20    20 16 180 270 arc
+closepath
+
+2 setlinewidth
+stroke
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Header
+
+/Georgia dup findfont def
+/GeorgiaBold /Georgia-Bold findfont def
+
+1 setlinejoin
+
+6 setlinewidth
+229 622 moveto
+538 0 rlineto
+0 60 rlineto
+-538 0 rlineto
+closepath
+stroke
+
+Georgia 40 scalefont setfont
+512 639 moveto
+-1 0 (vi / vim graphical cheat sheet) cashow
+
+Dvorak {
+	4 setlinewidth
+	330 588 moveto
+	334 0 rlineto
+	0 35 rlineto
+	-334 0 rlineto
+	closepath
+	stroke
+
+	496 597 moveto
+	Georgia 24 scalefont setfont
+	(Dvorak version by Peter Hosey) cshow
+} if
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Legend
+
+1 setlinewidth
+
+GeorgiaBold 13 scalefont setfont
+24 93 moveto
+(bol = beginning of line, eol = end of line) show
+24 79 moveto
+(mk = mark, yank = copy) show
+
+24 60 moveto
+(words:) show
+24 45 moveto
+(WORDs:) show
+
+gsave
+/Courier 13.97177505 selectfont
+(res := base + v.offset;) dup
+90 61 moveto show
+90 45 moveto show
+
+% Borders.
+red setcolorwitharray
+
+% Border on 'res'.
+90 57 moveto
+26 0 rlineto
+0 13 rlineto
+-26 0 rlineto
+closepath stroke
+90 42 moveto
+26 0 rlineto
+0 13 rlineto
+-26 0 rlineto
+closepath stroke
+
+% Border on ':='.
+125 57 moveto
+17 0 rlineto
+0 13 rlineto
+-17 0 rlineto
+closepath stroke
+125 42 moveto
+17 0 rlineto
+0 13 rlineto
+-17 0 rlineto
+closepath stroke
+
+% Border on 'base'.
+147 57 moveto
+36 0 rlineto
+0 13 rlineto
+-36 0 rlineto
+closepath stroke
+147 42 moveto
+36 0 rlineto
+0 13 rlineto
+-36 0 rlineto
+closepath stroke
+
+% Border on '+'.
+190 57 moveto
+9 0 rlineto
+0 13 rlineto
+-9 0 rlineto
+closepath stroke
+190 42 moveto
+9 0 rlineto
+0 13 rlineto
+-9 0 rlineto
+closepath stroke
+
+% Border on 'v.offset;'.
+205 57 moveto
+76 0 rlineto
+0 13 rlineto
+-76 0 rlineto
+closepath stroke
+205 42 moveto
+76 0 rlineto
+0 13 rlineto
+-76 0 rlineto
+closepath stroke
+grestore
+
+%Key backgrounds are rendered in the legend under 'Key backgrounds' below.
+
+%Summary headings.
+gsave
+GeorgiaBold 15 scalefont setfont
+365 265 moveto
+(Main command line commands ('ex'):) show
+365 184 moveto
+(Other important commands:) show
+365 106 moveto
+(Visual mode:) show
+691 265 moveto
+(Notes:) show
+grestore
+
+%Summary
+%% Main command-line commands ('ex')
+365 249 moveto
+(:w (save), :q (quit), :q! (quit w/o saving)) show
+365 236 moveto
+(:e f (open file f),) show
+365 223 moveto
+(:%s/x/y/g (replace 'x' by 'y' filewide),) show
+365 210 moveto
+(:h (help in vim), :new (new file in vim),) show
+
+%% Other important commands:
+365 169 moveto
+(CTRL-R: redo (vim),) show
+365 156 moveto
+(CTRL-F/-B: page up/down,) show
+365 143 moveto
+(CTRL-E/-Y: scroll line up/down,) show
+365 130 moveto
+(CTRL-V: block-visual mode (vim only)) show
+
+%% Visual mode:
+365 90 moveto
+(Move around and type operator to act) show
+365 77 moveto
+(on selected region (vim only)) show
+
+%% Notes:
+%%% 1
+713 249 moveto
+(use "x before a yank/paste/del command) show
+713 236 moveto
+(to use that register ('clipboard') (x=a..z,*)) show
+713 223 moveto
+((e.g.: "ay$ to copy rest of line to reg 'a')) show
+
+%%% 2
+713 201 moveto
+(type in a number before any action) show
+713 188 moveto
+(to repeat it that number of times) show
+713 175 moveto
+((e.g.: 2p, d2w, 5i, d4j)) show
+
+%%% 3
+713 152 moveto
+(duplicate operator to act on current line) show
+713 139 moveto
+((dd = delete line, >> = indent line)) show
+
+%%% 4
+713 119 moveto
+(ZZ to save & quit, ZQ to quit w/o saving) show
+
+%%% 5
+713 95 moveto
+(zt: scroll cursor to top,) show
+713 82 moveto
+(zb: bottom, zz: center) show
+
+%%%6
+713 65 moveto
+(gg: top of file (vim only),) show
+713 52 moveto
+(gf: open file under cursor (vim only)) show
+
+%% Footnote numbers
+gsave
+footnotecolor setcolorwitharray
+
+%%% 1
+691 249 moveto
+((1)) show
+
+%%% 2
+691 201 moveto
+((2)) show
+
+%%% 3
+691 152 moveto
+((3)) show
+
+%%% 4
+691 119 moveto
+((4)) show
+
+%%% 5
+691 95 moveto
+((5)) show
+
+%%%6
+691 65 moveto
+((6)) show
+
+grestore
+
+% Definitions
+% The key types defined are drawn in Keys sections below.
+% This section only draws the definitions.
+
+%% motion
+106 266 moveto
+(moves the cursor, or defines) show
+106 253 moveto
+(the range for an operator) show
+
+%% command
+106 231 moveto
+(direct action command,) show
+106 217 moveto
+(if ) show
+	gsave red setcolorwitharray (red) show currentpoint grestore moveto
+	(, it enters insert mode) show
+
+%% operator
+106 200 moveto
+(requires a motion afterwards,) show
+106 187 moveto
+(operates between cursor &) show
+106 174 moveto
+(destination) show
+
+%% extra
+106 156 moveto
+(special functions,) show
+106 143 moveto
+(requires extra input) show
+
+%% q.
+%% This doesn't have a regular key-definition border, but still, it is drawn separately (in Keys - Letters).
+106 125 moveto
+(commands with a dot need) show
+106 112 moveto
+(a char argument afterwards) show
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Keys
+
+3 setlinewidth
+
+% width height -> drawframe -> -
+% The frame will be drawn and filled with its lower-left corner at the current point.
+/drawframe {
+2 dict begin
+	/height exch def
+	/width  exch def
+
+	width 0 rlineto
+	0 height rlineto
+	width neg 0 rlineto
+	closepath
+
+	% Make a user path from it.
+	true upath
+
+	dup
+	% Stack: path path
+	gsave
+		black setcolorwitharray
+		ustroke
+	grestore
+	ufill
+} def
+
+%Key definitions: 79.121147pt w, 21.719341pt h.
+%Keys: 68.54332pt w, 31.090153pt h.
+%Esc key: 68.54332pt w, 63.379036pt h (it's square).
+
+%% Definitions
+%%% motion
+newpath 22 250 moveto
+motioncolor setcolorwitharray
+79.121147 21.719341 drawframe
+61.5605735 256 moveto
+black setcolorwitharray
+(motion) cshow
+%%% command
+newpath 22 217 moveto
+cmdcolor    setcolorwitharray
+79.121147 21.719341 drawframe
+61.5605735 224 moveto
+black setcolorwitharray
+(command) cshow
+%%% operator
+newpath 22 185 moveto
+opcolor      setcolorwitharray
+79.121147 21.719341 drawframe
+61.5605735 192 moveto
+black setcolorwitharray
+(operator) cshow
+%%% extra
+newpath 22 141 moveto
+white       setcolorwitharray
+79.121147 21.719341 drawframe
+61.5605735 148 moveto
+black setcolorwitharray
+(extra) cshow
+
+%%% q.
+gsave
+newpath 61.5605735 113 moveto
+Georgia 31.99996567 scalefont setfont
+(q) cshow
+71 121 moveto
+-1 0 (.) ashow
+
+%% Keys
+
+% Takes seven arguments:
+% footnotes definitionline0 definitionline1 hasdot entersinsert  letter bgcolor
+%  (string)        (string)        (string) (bool)      (bool) (string) (array)
+% Pass null for for the definition's line 0 to do a one-line definition.
+% The key will be drawn from the current point.
+% The current point will be advanced 74pt horizontally and 0pt vertically.
+/drawkey {
+	10 dict begin
+		/bgcolor         exch def
+		/letter          exch def
+		/entersinsert    exch def
+		/hasdot          exch def
+		/definitionline1 exch def
+		/definitionline0 exch def
+		/footnotes       exch def
+
+		/fontsize 31.9999733 def
+		% If our letter is not in this array, it is considered lowercase.
+		% Tall lowercase letters are also included, but Q is intentionally omitted for its descender.
+		(ABCDEFGHIJKLMNOPRSTUVWXYZbdfhikl1234567890?!%^&*`'") letter search
+		{	% Uppercase letter; y -= 0pt.
+			pop pop pop
+			/y_offset -4 def
+		} {	% No match. Not an uppercase letter.
+			pop
+
+			% If it's in THIS array, then it needs to ride higher than an uppercase letter would (so it doesn't fall out) but lower than a lowercase letter (so it doesn't poke out).
+			(j[]{}()\\/$) letter strchr
+			dup -1 gt {
+				dup
+				/y_offset [0.7 1 dup 0.5 dup dup dup 0.55 dup 0.5] 3 -1 roll get neg def
+				/fontsize 29 def
+			} {
+				pop
+				/y_offset 0 def
+			} ifelse
+		} ifelse
+		% If our letter is in this array, it is wide, and must be displayed 2pt farther to the right than normal.
+		(@MWmw) letter search
+		{	% We have a match.
+			pop pop pop
+			/iswide  true def
+		} {	% No match. Not a wide letter.
+			pop
+			/iswide false def
+		} ifelse
+
+		gsave
+		currentpoint translate
+		0 0 moveto
+		bgcolor setcolorwitharray
+		68.54332 31.090153 drawframe
+
+		entersinsert { red } { black } ifelse setcolorwitharray
+
+		% Lowercase: Draw the letter (centered) 11pt or 16pt (m or w) right and 8pt up from the LL inside corner of the frame.
+		% j or []: Draw the letter (centered) 11pt right and 6pt up from the LL inside corner.
+		% Uppercase: Draw the letter (centered) 11pt or 16pt (M or W) right and 4pt up from the LL inside corner of the frame.
+		%letter
+		12 iswide booltoint 4 mul add %x
+		8 y_offset add %y
+		moveto
+		gsave
+			% Numbers are set in Times New Roman, not Georgia.
+			(0123456789) letter search
+			{
+				pop pop pop
+				/TimesNewRomanPSMT findfont
+			} {
+				pop
+				Georgia
+			} ifelse
+			fontsize scalefont setfont
+
+			letter cshow
+			currentpoint
+		grestore
+		moveto
+
+		hasdot {
+			% The dot is 3pt higher in uppercase than in lowercase.
+			-2 %x
+			y_offset 0 ne booltoint 3 mul
+			6 add %y = 6 + (!islower * 3)
+			rmoveto
+			(.) show
+		} if
+
+		%definition (line0, then line1)
+		46 12 moveto
+		GeorgiaBold 10 scalefont setfont
+		black setcolorwitharray
+
+		% If line 0 is null, line 1 will be drawn y-centered.
+		% Otherwise, line 0 will be drawn above line 1.
+		definitionline0 null ne {
+			0 6 rmoveto
+			/savedpoint [currentpoint] def
+			definitionline0 cshow
+			% Line 1 should be drawn 12 pt below line 0.
+			savedpoint aload pop 12 sub moveto
+		} if
+
+		% Draw line 1, if there is one.
+		definitionline1 null ne {
+			definitionline1 cshow
+		} if
+
+		%footnotes
+		GeorgiaBold 11 scalefont setfont
+		% Draw footnote references, if any.
+		footnotes null ne {
+			footnotecolor setcolorwitharray
+			66 footnotes (6) eq {21}{23} ifelse moveto
+			footnotes rshow
+		} if
+
+		grestore
+
+		74 0 rmoveto
+	end
+} def
+
+newpath
+% Bottom row, lowercase.
+151 297 moveto
+Dvorak {
+	%  FN     LINE0    LINE1 HASDOT   INS LTR     BGCOLOR
+	 null  (repeat) (t/T/f/F) false false (;) motioncolor drawkey
+	 null  (record)  (macro)   true false (q)    cmdcolor drawkey
+	 null     null     null   false false (j) motioncolor drawkey
+	 null     null     null   false false (k) motioncolor drawkey
+	 null  (delete)   (char)  false false (x)    cmdcolor drawkey
+	 null    (prev)   (word)  false false (b) motioncolor drawkey
+	 null     (set)   (mark)  false false (m)    cmdcolor drawkey
+	 null    (next)   (word)  false false (w) motioncolor drawkey
+	 null  (visual)   (mode)  false false (v)    cmdcolor drawkey
+	  (5)   (extra)   (cmds)   true false (z)  extracolor drawkey
+} {
+	%  FN     LINE0    LINE1 HASDOT   INS LTR     BGCOLOR
+	  (5)   (extra)   (cmds)   true false (z)  extracolor drawkey
+	 null  (delete)   (char)  false false (x)    cmdcolor drawkey
+	(1,3)     null  (change)  false  true (c)     opcolor drawkey
+	 null  (visual)   (mode)  false false (v)    cmdcolor drawkey
+	 null    (prev)   (word)  false false (b) motioncolor drawkey
+	 null    (next) ((find))  false false (n) motioncolor drawkey
+	 null     (set)   (mark)  false false (m)    cmdcolor drawkey
+	 null (reverse) (t/T/f/F) false false (,) motioncolor drawkey
+	 null  (repeat)    (cmd)  false false (.)    cmdcolor drawkey
+	 null     null    (find)   true false (/) motioncolor drawkey
+} ifelse
+% Bottom row, uppercase.
+151 328 moveto
+Dvorak {
+	%  FN     LINE0    LINE1 HASDOT   INS LTR     BGCOLOR
+	 null  (ex cmd)   (line)  false false (:)    cmdcolor drawkey
+	 null      (ex)   (mode)   true false (Q)    cmdcolor drawkey
+	 null    (join)  (lines)  false false (J)    cmdcolor drawkey
+	 null     null    (help)  false false (K)    cmdcolor drawkey
+	 null   (back-)  (space)  false false (X)    cmdcolor drawkey
+	 null    (prev)   (WORD)  false false (B) motioncolor drawkey
+	 null  (screen)  (mid'l)  false false (M) motioncolor drawkey
+	 null    (next)   (WORD)  false false (W)    cmdcolor drawkey
+	 null  (visual)  (lines)  false false (V)    cmdcolor drawkey
+	  (4)   (extra)   (quit)   true false (Z)  extracolor drawkey
+} {
+	%  FN     LINE0    LINE1 HASDOT   INS LTR     BGCOLOR
+	  (4)   (extra)   (quit)   true false (Z)  extracolor drawkey
+	 null   (back-)  (space)  false false (X)    cmdcolor drawkey
+	 null  (change) (to eol)  false  true (C)    cmdcolor drawkey
+	 null  (visual)  (lines)  false false (V)    cmdcolor drawkey
+	 null    (prev)   (WORD)  false false (B) motioncolor drawkey
+	 null    (prev) ((find))  false false (N) motioncolor drawkey
+	 null  (screen)  (mid'l)  false false (M) motioncolor drawkey
+	  (3)     (un-) (indent)  false false (<)     opcolor drawkey
+	  (3)     null  (indent)  false false (>)     opcolor drawkey
+	 null    (find)   (rev.)   true false (?) motioncolor drawkey
+} ifelse
+
+% Middle row, lowercase.
+126 367 moveto
+Dvorak {
+	 null     null  (append)  false  true (a)    cmdcolor drawkey
+	 null    (open)  (below)  false  true (o)    cmdcolor drawkey
+	 null     (end)   (word)  false false (e) motioncolor drawkey
+	 null     null    (undo)  false false (u)    cmdcolor drawkey
+	 null  (insert)   (mode)  false  true (i)    cmdcolor drawkey
+	(1,3)     null  (delete)  false false (d)     opcolor drawkey
+	 null     null     null   false false (h) motioncolor drawkey
+	 null     null   ('till)   true false (t) motioncolor drawkey
+	 null    (next) ((find))  false false (n) motioncolor drawkey
+	 null   (subst)   (char)  false  true (s)    cmdcolor drawkey
+	 null    (prev)    (line) false false (-) motioncolor drawkey
+} {
+	%  FN     LINE0    LINE1 HASDOT   INS LTR     BGCOLOR
+	 null     null  (append)  false  true (a)    cmdcolor drawkey
+	 null   (subst)   (char)  false  true (s)    cmdcolor drawkey
+	(1,3)     null  (delete)  false false (d)     opcolor drawkey
+	 null     (fwd) (to char)  true false (f) motioncolor drawkey
+	  (6)   (extra)   (cmds)   true false (g)  extracolor drawkey
+	 null     null     null   false false (h) motioncolor drawkey
+	 null     null     null   false false (j) motioncolor drawkey
+	 null     null     null   false false (k) motioncolor drawkey
+	 null     null     null   false false (l) motioncolor drawkey
+	 null  (repeat) (t/T/f/F) false false (;) motioncolor drawkey
+	 null    (goto) (mk. bol)  true false (') motioncolor drawkey
+} ifelse
+ null     (not)    (used)  true false (\\) extracolor drawkey
+% Middle row, uppercase.
+126 398 moveto
+Dvorak {
+	%  FN     LINE0    LINE1 HASDOT   INS LTR     BGCOLOR
+	 null  (append) (at eol)   true false (A)    cmdcolor drawkey
+	 null    (open)  (above)  false  true (O) motioncolor drawkey
+	 null     (end)   (WORD)  false false (E)    cmdcolor drawkey
+	 null    (undo)   (line)  false false (U)    cmdcolor drawkey
+	 null  (insert) (at bol)  false  true (I)    cmdcolor drawkey
+	 null  (delete) (to eol)  false false (D)    cmdcolor drawkey
+	 null  (screen)    (top)  false false (H) motioncolor drawkey
+	 null    (back)  ('till)  false false (T) motioncolor drawkey
+	 null    (prev) ((find))  false false (N) motioncolor drawkey
+	 null   (subst)   (line)  false false (S)    cmdcolor drawkey
+	 null ("soft" bol) (down)  true false (_)  motioncolor drawkey
+} {
+	%  FN     LINE0    LINE1 HASDOT   INS LTR     BGCOLOR
+	 null  (append) (at eol)   true false (A)    cmdcolor drawkey
+	 null   (subst)   (line)  false false (S)    cmdcolor drawkey
+	 null  (delete) (to eol)  false false (D)    cmdcolor drawkey
+	 null  ("back")    (fwd)  false false (F) motioncolor drawkey
+	 null    (eof/) (goto ln) false false (G) motioncolor drawkey
+	 null  (screen)    (top)  false false (H) motioncolor drawkey
+	 null    (join)  (lines)  false false (J)    cmdcolor drawkey
+	 null     null    (help)  false false (K)    cmdcolor drawkey
+	 null  (screen) (bottom)  false false (L) motioncolor drawkey
+	 null  (ex cmd)   (line)  false false (:)    cmdcolor drawkey
+	  (1)    (reg.)   (spec)   true false (")  extracolor drawkey
+} ifelse
+ null    (bol/) (goto col) true false (|) motioncolor drawkey
+
+% Top row, lowercase.
+104 436 moveto
+Dvorak {
+	%  FN     LINE0    LINE1 HASDOT   INS LTR     BGCOLOR
+	 null    (goto) (mk. bol)  true false (') motioncolor drawkey
+	 null (reverse) (t/T/f/F) false false (,) motioncolor drawkey
+	 null  (repeat)    (cmd)  false false (.)    cmdcolor drawkey
+	  (1)   (paste)  (after)  false false (p)    cmdcolor drawkey
+	(1,3)     null    (yank)  false false (y)     opcolor drawkey
+	 null     (fwd) (to char)  true false (f) motioncolor drawkey
+	  (6)   (extra)   (cmds)   true false (g)  extracolor drawkey
+	(1,3)     null  (change)  false  true (c)     opcolor drawkey
+	 null (replace)   (char)   true false (r)    cmdcolor drawkey
+	 null     null     null   false false (l) motioncolor drawkey
+	 null     null    (find)   true false (/) motioncolor drawkey
+	  (3)    (auto)  (format) false false (=)     opcolor drawkey
+} {
+	%  FN     LINE0    LINE1 HASDOT   INS LTR     BGCOLOR
+	 null  (record)  (macro)   true false (q)    cmdcolor drawkey
+	 null    (next)   (word)  false false (w) motioncolor drawkey
+	 null     (end)   (word)  false false (e) motioncolor drawkey
+	 null (replace)   (char)   true false (r)    cmdcolor drawkey
+	 null     null   ('till)   true false (t) motioncolor drawkey
+	(1,3)     null    (yank)  false false (y)     opcolor drawkey
+	 null     null    (undo)  false false (u)    cmdcolor drawkey
+	 null  (insert)   (mode)  false  true (i)    cmdcolor drawkey
+	 null    (open)  (below)  false  true (o)    cmdcolor drawkey
+	  (1)   (paste)  (after)  false false (p)    cmdcolor drawkey
+	 null     null    (misc)   true false ([) motioncolor drawkey
+	 null     null    (misc)   true false (]) motioncolor drawkey
+} ifelse
+% Top row, uppercase.
+104 467 moveto
+Dvorak {
+	  (1)    (reg.)   (spec)   true false (")  extracolor drawkey
+	  (3)     (un-) (indent)  false false (<)     opcolor drawkey
+	  (3)     null  (indent)  false false (>)     opcolor drawkey
+	 null   (paste) (before)   true false (P)    cmdcolor drawkey
+	 null    (yank)   (line)  false false (Y) motioncolor drawkey
+	 null  ("back")    (fwd)  false false (F) motioncolor drawkey
+	 null    (eof/) (goto ln) false false (G) motioncolor drawkey
+	 null  (change) (to eol)  false  true (C)    cmdcolor drawkey
+	 null (replace)   (mode)  false  true (R) motioncolor drawkey
+	 null  (screen) (bottom)  false false (L) motioncolor drawkey
+	 null    (find)   (rev.)   true false (?) motioncolor drawkey
+	 null    (next)   (line)   true false (+)  motioncolor drawkey
+} {
+	%  FN     LINE0    LINE1 HASDOT   INS LTR     BGCOLOR
+	 null      (ex)   (mode)   true false (Q)    cmdcolor drawkey
+	 null    (next)   (WORD)  false false (W)    cmdcolor drawkey
+	 null     (end)   (WORD)  false false (E)    cmdcolor drawkey
+	 null (replace)   (mode)  false  true (R) motioncolor drawkey
+	 null    (back)  ('till)  false false (T) motioncolor drawkey
+	 null    (yank)   (line)  false false (Y) motioncolor drawkey
+	 null    (undo)   (line)  false false (U)    cmdcolor drawkey
+	 null  (insert) (at bol)  false  true (I)    cmdcolor drawkey
+	 null    (open)  (above)  false  true (O) motioncolor drawkey
+	 null   (paste) (before)   true false (P)    cmdcolor drawkey
+	 null   (begin) (parag.)   true false ({)  extracolor drawkey
+	 null     (end) (parag.)   true false (}) motioncolor drawkey
+} ifelse
+
+% Number row, lowercase.
+15 507 moveto
+	%  FN     LINE0    LINE1 HASDOT   INS LTR     BGCOLOR
+	 null    (goto)   (mark)   true false (`) motioncolor drawkey
+	 null     null  (append)  false false (1)  extracolor drawkey
+	 null   (subst)   (char)  false false (2)  extracolor drawkey
+	(1,3)     null  (delete)  false false (3)  extracolor drawkey
+	 null     (fwd) (to char)  true false (4)  extracolor drawkey
+	  (6)   (extra)   (cmds)   true false (5)  extracolor drawkey
+	 null     null     null   false false (6)  extracolor drawkey
+	 null     null     null   false false (7)  extracolor drawkey
+	 null     null     null   false false (8)  extracolor drawkey
+	 null     null     null   false false (9)  extracolor drawkey
+	 null  ("hard")    (bol)  false false (0) motioncolor drawkey
+Dvorak {
+	%  FN     LINE0    LINE1 HASDOT   INS LTR      BGCOLOR
+	 null     null    (misc)   true false ([) motioncolor drawkey
+	 null     null    (misc)   true false (]) motioncolor drawkey
+} {
+	%  FN     LINE0    LINE1 HASDOT   INS LTR     BGCOLOR
+	 null    (prev)    (line) false false (-) motioncolor drawkey
+	  (3)    (auto)  (format) false false (=)     opcolor drawkey
+} ifelse
+% Number row, uppercase.
+15 538 moveto
+%  FN     LINE0    LINE1 HASDOT   INS LTR      BGCOLOR
+ null  (toggle)   (case)  false false (~)     cmdcolor drawkey
+ null (external) (filter) false false (!)      opcolor drawkey
+ null    (play)  (macro)  false false (@)     cmdcolor drawkey
+ null    (prev)  (ident)  false false (#)  motioncolor drawkey
+ null     null     (eol)   true false ($)  motioncolor drawkey
+ null    (goto)  (match)   true false (%)  motioncolor drawkey
+ null  ("soft")    (bol)  false false (^)  motioncolor drawkey
+ null  (repeat)     (:s)  false false (&)     cmdcolor drawkey
+ null    (next)  (ident)  false false (*)  motioncolor drawkey
+ null   (begin) (sentence) false false (\() motioncolor drawkey
+ null     (end) (sentence) false false (\)) motioncolor drawkey
+Dvorak {
+	%  FN     LINE0    LINE1 HASDOT   INS LTR      BGCOLOR
+	 null   (begin) (parag.)   true false ({)  extracolor drawkey
+	 null     (end) (parag.)   true false (}) motioncolor drawkey
+} {
+	%  FN     LINE0    LINE1 HASDOT   INS LTR      BGCOLOR
+	 null ("soft" bol) (down)  true false (_)  motioncolor drawkey
+	 null    (next)   (line)   true false (+)  motioncolor drawkey
+} ifelse
+
+% Esc key.
+gsave
+	15 588 translate
+
+	/width  68.54332  def
+	/height 63.379036 def
+	width 0.5 mul 0 moveto
+	width 1 sub dup 
+	% Stack: width-1 width-1
+		1 1 270 360 arc
+	height 1 sub dup
+	% Stack: width-1 height-1 height-1
+	3 1 roll
+	% Stack: height-1 width-1 height-1
+		1 0 90 arc
+	% Stack: height-1
+	1 exch
+	% Stack: 1 height-1
+		1 90 180 arc
+		1 1 1 180 270 arc
+	closepath
+	true upath dup
+
+	black setcolorwitharray
+	ustroke
+
+	gsave
+		cmdcolor setcolorwitharray
+		ufill
+	grestore
+
+	Georgia 29 scalefont setfont
+	 4 38 moveto  (Esc)    show
+
+	Georgia 10 scalefont setfont
+	42 18 moveto (normal) cshow
+	42  5 moveto  (mode)  cshow
+grestore
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Arrows
+
+black setcolorwitharray
+
+% Stems first.
+4 setlinewidth
+
+%% Left (h)
+Dvorak { 623 383 } { 548 383 } ifelse moveto
+-12 0 rlineto
+stroke
+%% Right (l)
+Dvorak { 802 452 } { 750 383 } ifelse moveto
+12 0 rlineto
+stroke
+%% Up (k)
+Dvorak { 418 302 } { 689 373 } ifelse moveto
+0 12 rlineto
+stroke
+%% Down (j)
+Dvorak { 344 323 } { 613 393 } ifelse moveto
+0 -12 rlineto
+stroke
+
+% Now the heads. These are 10pt deep and 16pt across.
+1 setlinewidth
+
+%% Left
+Dvorak { 612 375 } { 538 375 } ifelse moveto % Bottom-right corner
+0 16 rlineto
+Dvorak { 602 383 } { 528 383 } ifelse lineto % Point
+closepath
+fill
+%% Right
+Dvorak { 811 460 } { 760 391 } ifelse moveto
+0 -16 rlineto
+Dvorak { 821 452 } { 770 383 } ifelse lineto
+closepath
+fill
+%% Up
+Dvorak { 410 313 } { 681 383 } ifelse moveto
+16 0 rlineto
+Dvorak { 418 323 } { 689 393 } ifelse lineto
+closepath
+fill
+%% Down
+Dvorak { 336 312 } { 605 381 } ifelse moveto
+Dvorak { 344 302 } { 613 371 } ifelse lineto
+Dvorak { 352 312 } { 621 381 } ifelse lineto
+closepath
+fill
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Footer
+
+Georgia 16 scalefont setfont
+512 13 moveto
+
+Dvorak {
+	(Based on QWERTY/SVG version at http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html)
+} {
+	(Based on SVG version at http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html)
+} ifelse
+cshow
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+showpage
